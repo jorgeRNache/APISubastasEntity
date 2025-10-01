@@ -1,0 +1,218 @@
+[
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.ExtracionDatosEndPoint",
+    "Method": "Post",
+    "RelativePath": "api/extracciondatos/completo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.ExtracionDatosEndPoint",
+    "Method": "Post",
+    "RelativePath": "api/extracciondatos/subastaid/{subastaid}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subastaid",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.SubastaDetalleEndPoint",
+    "Method": "GetSubastaFecha",
+    "RelativePath": "api/subastadetalle/subasta/fecha/{subastaid}/{fecha}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subastaid",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "fecha",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiSubastasEntity.Modelos.Extras.TokenDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.SubastaDetalleEndPoint",
+    "Method": "GetSubastaFechaGenero",
+    "RelativePath": "api/subastadetalle/subasta/fecha/genero/{subastaid}/{fecha}/{generoid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subastaid",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "fecha",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      },
+      {
+        "Name": "generoid",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiSubastasEntity.Modelos.Extras.TokenDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.SubastaDetalleEndPoint",
+    "Method": "GetSubastaUltimoDiaGenero",
+    "RelativePath": "api/subastadetalle/subasta/genero/ultimodia/{subastaid}/{generoid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subastaid",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "generoid",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiSubastasEntity.Modelos.Extras.TokenDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.SubastaDetalleEndPoint",
+    "Method": "GetSubastaUltimoDia",
+    "RelativePath": "api/subastadetalle/subasta/ultimodia/{subastaid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subastaid",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiSubastasEntity.Modelos.Extras.TokenDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.UserEndPoint",
+    "Method": "Login",
+    "RelativePath": "api/user/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ApiSubastasEntity.Modelos.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiSubastasEntity.Modelos.Extras.TokenDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiSubastasEntity.EndPoints.UserEndPoint",
+    "Method": "Register",
+    "RelativePath": "api/user/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ApiSubastasEntity.Modelos.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "ApiSubastasEntity.Modelos.Error.Tipo.InvalidPasswordErrorDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "ApiSubastasEntity.Modelos.Error.Tipo.ExiteUserErrorDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 409
+      }
+    ]
+  }
+]
