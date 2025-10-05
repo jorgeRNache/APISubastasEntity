@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ApiSubastasEntity.Modelos
 {
-    public class LoginDTO : ModelosControl
+    public class LoginDTO 
     {
 
         public enum prop

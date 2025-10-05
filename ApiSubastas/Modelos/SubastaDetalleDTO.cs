@@ -1,6 +1,7 @@
 ﻿using ApiSubastasEntity.Modelos.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ApiSubastasEntity.Modelos
 {
@@ -35,12 +36,14 @@ namespace ApiSubastasEntity.Modelos
 
         [ForeignKey("Subasta")]
         public long subastaid { get; set; }
+
         public SubastaDTO Subasta { get; set; } = null!;
 
         public DateTime fecha { get; set; }
 
         [ForeignKey("Genero")]
         public long generoid { get; set; }
+
         public GeneroDTO Genero { get; set; } = null!;
 
         public decimal corte1 { get; set; }
@@ -61,8 +64,4 @@ namespace ApiSubastasEntity.Modelos
     }
 
 
-    public class SubastaDetalleDTOGeneroDTO : SubastaDetalleDTO
-    {
-        public string nombre_genero { get; set; }
-    }
 }

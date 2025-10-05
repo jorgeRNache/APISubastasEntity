@@ -22,6 +22,9 @@ namespace ApiSubastasEntity.EndPoints
 
             userController.SetContext(context);
             _userController = userController;
+                
+        
+
             
         }
 

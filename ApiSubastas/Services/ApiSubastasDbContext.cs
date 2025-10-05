@@ -6,17 +6,11 @@ namespace ApiSubastasEntity.Services
     public class ApiSubastasDbContext : DbContext
     {
 
-        public string _key;
-        public string _Issuer;
-        public string _Audience;
-
-        public ApiSubastasDbContext(DbContextOptions<ApiSubastasDbContext> options, IConfiguration _config)
+        
+        public ApiSubastasDbContext(DbContextOptions<ApiSubastasDbContext> options)
            : base(options) 
         {
-            _key = _config["Jwt:Key"];
-            _Issuer = _config["Jwt:Issuer"];
-            _Audience = _config["Jwt:Audience"];
-
+          
         }
 
         public DbSet<FamiliaDTO> Familia { get; set; } = null!;
