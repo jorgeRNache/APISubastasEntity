@@ -61,7 +61,7 @@ namespace ApiSubastasEntity.EndPoints
           Description = ""
       )]
         [ProducesResponseType(typeof(TokenDTO), StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<SubastaDetalleDTOGeneroDTO>>> GetSubastaUltimoDia(long subastaid)
+        public async Task<ActionResult<List<SubastaDetalleDTO>>> GetSubastaUltimoDia(long subastaid)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace ApiSubastasEntity.EndPoints
          Description = ""
         )]
         [ProducesResponseType(typeof(TokenDTO), StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<SubastaDetalleDTOGeneroDTO>>> GetSubastaUltimoDiaGenero(long subastaid, long generoid)
+        public async Task<ActionResult<List<SubastaDetalleDTO>>> GetSubastaUltimoDiaGenero(long subastaid, long generoid)
         {
             try
             {

@@ -2,6 +2,7 @@
 using ApiSubastasEntity.Controllers;
 using ApiSubastasEntity.Services;
 using ApiSubastasEntity.Services.SwaggerInputsFiltros;
+using ApiSubastasEntity.Utilidades.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.EntityFrameworkCore;
@@ -76,9 +77,10 @@ namespace camionet
 
             });
 
-
-
-
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.EnableAnnotations();
+            });
             // - Token JWT
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                               .AddJwtBearer(options =>
@@ -121,6 +123,12 @@ namespace camionet
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+
+           
+
+
+            app.UseMiddleware<MiddlewareDateTimeFilter>();// para que las fechas se las puedas introducir como dia-mes-año
 
             app.UseHttpsRedirection();
             app.UseAuthentication(); // NECESARIO para que se valide el token JWT

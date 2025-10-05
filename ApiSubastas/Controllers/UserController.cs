@@ -14,7 +14,17 @@ namespace ApiSubastasEntity.Controllers
 {
     public class UserController : BaseControlador
     {
-        public UserController(){ }
+
+        private string _key;
+        private string _Issuer;
+        private string _Audience;
+
+        public UserController(IConfiguration config)
+        {
+            _key = config["JwtSettings:SecretKey"] ?? "";
+            _Issuer = config["JwtSettings:Issuer"] ?? "";
+            _Audience = config["JwtSettings:Audience"] ?? "";
+        }
 
 
         public async Task<ActionResult> Register(LoginDTO usuarioRegister)
@@ -87,13 +97,13 @@ namespace ApiSubastasEntity.Controllers
                     new Claim("otraprueba", "jorgenache"),
                 };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_context._key));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             // 4. Crear el token
             var token = new JwtSecurityToken(
-                issuer: _context._Issuer,
-                audience: _context._Audience,
+                issuer: _Issuer,
+                audience: _Audience,
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds

@@ -20,6 +20,7 @@ namespace ApiSubastasEntity.Controllers
             var lista = await _context.SubastaDetalle
                 .Where(u => u.subastaid == subastaid)
                 .Where(u => u.fecha == fecha)
+                .Include(g => g.Genero)
                 .ToListAsync();
             return Ok(lista);
         }
@@ -31,11 +32,12 @@ namespace ApiSubastasEntity.Controllers
                 .Where(u => u.subastaid == subastaid)
                 .Where(u => u.generoid == generoid)
                 .Where(u => u.fecha == fecha)
+                .Include(g => g.Genero)
                 .ToListAsync();
             return Ok(lista);
         }
 
-        public async Task<ActionResult<List<SubastaDetalleDTOGeneroDTO>>> GetUltimaSubasta(long subastaid)
+        public async Task<ActionResult<List<SubastaDetalleDTO>>> GetUltimaSubasta(long subastaid)
         {
             var fechaMaxQuery = _context.SubastaDetalle.Where(u => u.subastaid == subastaid);
             var fechaMax = await fechaMaxQuery.MaxAsync(u => u.fecha);
@@ -46,12 +48,12 @@ namespace ApiSubastasEntity.Controllers
             return Ok(resultado);
         }
 
-        public async Task<ActionResult<List<SubastaDetalleDTOGeneroDTO>>> GetUltimaSubastaGenero(long subastaid, long generoid)
+        public async Task<ActionResult<List<SubastaDetalleDTO>>> GetUltimaSubastaGenero(long subastaid, long generoid)
         {
-            var fechaMaxQuery = _context.SubastaDetalle.Where(u => u.subastaid == subastaid && u.generoid == generoid);
+            var fechaMaxQuery = _context.SubastaDetalle.Where(u => u.subastaid == subastaid);
             var fechaMax = await fechaMaxQuery.MaxAsync(u => u.fecha);
 
-            var queryfinal = _context.SubastaDetalle.Where(u => u.subastaid == subastaid && u.fecha == fechaMax);
+            var queryfinal = _context.SubastaDetalle.Where(u => u.subastaid == subastaid && u.generoid == generoid && u.fecha == fechaMax);
             var resultado = await queryfinal.Include(s => s.Genero).ToListAsync();
 
             return Ok(resultado);
@@ -68,7 +70,7 @@ namespace ApiSubastasEntity.Controllers
 
         public async Task<ActionResult<SubastaDetalleDTO>> GetSubastaDetalle(long subastaid, long generoid, DateTime fecha)
         {
-            var subastafamilia = await _context.SubastaDetalle.Where(u => u.subastaid == subastaid && u.generoid == generoid && u.fecha == fecha).ToListAsync();
+            var subastafamilia = await _context.SubastaDetalle.FirstOrDefaultAsync(u => u.subastaid == subastaid && u.generoid == generoid && u.fecha == fecha);
             return Ok(subastafamilia);
         }
 

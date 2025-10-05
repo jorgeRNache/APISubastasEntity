@@ -8,16 +8,6 @@ namespace ApiSubastasEntity.Modelos.Base
     public class ModelosControl
     {
 
-        [JsonIgnore]
-        public string tabla
-        {
-            get => this.GetType().Name.Replace("DTO", "").ToLower();
-            set
-            {
-                tabla = value;
-            }
-        }
-
 
         #region Public Method
 
