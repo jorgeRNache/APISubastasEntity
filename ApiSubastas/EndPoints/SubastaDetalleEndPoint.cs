@@ -93,5 +93,20 @@ namespace ApiSubastasEntity.EndPoints
             
         }
 
+
+        [HttpGet("media/subasta/genero/dias/{subastaid:long}/{generoid:long}/{dias:int}")]
+        [SwaggerOperation(
+         Summary = "Te devuelve las media de todos los cortes de la subasta especificada de todos los dias atras que le indiques",
+         Description = "Le pasas un numero de dias, por ejemplo 30 y se va al dia de hoy pero 30 dias atras, recoje todas las subastas" +
+         " y te hace la media de todos los cortes, IMPORTANTE no tiene encuenta los 0, es decir, si recoje 20 subastas pero el corte5" +
+            "solo tiene valor 6 veces entonces hara la media entre 6"
+        )]
+        [ProducesResponseType(typeof(SubastaDetalleDTO), StatusCodes.Status200OK)]
+        public async Task<ActionResult<SubastaDetalleDTO>> GetMediaSubataGeneroDia(long subastaid, long generoid, int dias)
+        {
+            return await _subastaDetalleController.GetMediaSubataGeneroDia(subastaid, generoid, dias);
+        }
+
+
     }
 }
